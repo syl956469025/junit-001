@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<!-- 
+	<Resource name="jdbc/tomcat" auth="Container" type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://10.99.246.50:3306/vmall_test?useUnicode=true&amp;zeroDateTimeBehavior=round&amp;characterEncoding=utf-8&amp;autoReconnect=true"
+		username="a_vmall" password="vmall123" maxActive="20" maxIdle="10" maxWait="10000" />
+	 -->
+	<Resource name="jdbc/tomcat" auth="Container" type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;zeroDateTimeBehavior=round&amp;characterEncoding=utf-8&amp;autoReconnect=true"
+		username="root" password="root" maxActive="20" maxIdle="10" maxWait="10000" />
+		
+		<!-- <Resource 
+         name="jdbc/tomcat"
+         factory="com.alibaba.druid.pool.DruidDataSourceFactory"
+         auth="Container"
+         type="javax.sql.DataSource"
+         driverClassName="com.mysql.jdbc.Driver"
+         url="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8"
+         username="root"
+         password="root"
+         maxActive="50"
+         maxWait="10000"
+         removeabandoned="true"
+         removeabandonedtimeout="60"
+         logabandoned="false"
+         filters="stat"/> -->
+</Context>

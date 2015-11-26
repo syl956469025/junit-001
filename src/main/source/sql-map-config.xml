@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 配置别名方便xml中使用 -->
+	  <typeAliases>
+<!-- 		<typeAlias type="com.lenovo.test.model.User" alias="User"/> -->
+	</typeAliases> 
+	<!-- sql mapper映射文件 -->
+	 <mappers>
+		<!-- <mapper resource="com/jcshop/text/model/test.xml" /> -->
+<!-- 		<mapper resource="com/lenovo/test/dao/UserMapper.xml" /> -->
+	</mappers> 
+</configuration>

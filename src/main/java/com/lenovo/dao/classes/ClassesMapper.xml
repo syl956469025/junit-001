@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lenovo.dao.classes.ClassesMapper" >
+  <resultMap id="BaseResultMap" type="com.lenovo.entity.classes.Classes" >
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="className" property="classname" jdbcType="VARCHAR" />
+    <result column="classLevel" property="classlevel" jdbcType="INTEGER" />
+    <result column="classCount" property="classcount" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, className, classLevel, classCount
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lenovo.entity.classes.ClassesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from classes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.lenovo.entity.classes.ClassesExample" >
+    delete from classes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lenovo.entity.classes.Classes" >
+    insert into classes (ID, className, classLevel, 
+      classCount)
+    values (#{id,jdbcType=VARCHAR}, #{classname,jdbcType=VARCHAR}, #{classlevel,jdbcType=INTEGER}, 
+      #{classcount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lenovo.entity.classes.Classes" >
+    insert into classes
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="classname != null" >
+        className,
+      </if>
+      <if test="classlevel != null" >
+        classLevel,
+      </if>
+      <if test="classcount != null" >
+        classCount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="classname != null" >
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="classlevel != null" >
+        #{classlevel,jdbcType=INTEGER},
+      </if>
+      <if test="classcount != null" >
+        #{classcount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lenovo.entity.classes.ClassesExample" resultType="java.lang.Integer" >
+    select count(*) from classes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update classes
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classname != null" >
+        className = #{record.classname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classlevel != null" >
+        classLevel = #{record.classlevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.classcount != null" >
+        classCount = #{record.classcount,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update classes
+    set ID = #{record.id,jdbcType=VARCHAR},
+      className = #{record.classname,jdbcType=VARCHAR},
+      classLevel = #{record.classlevel,jdbcType=INTEGER},
+      classCount = #{record.classcount,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
